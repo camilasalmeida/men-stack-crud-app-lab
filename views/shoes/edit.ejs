@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update a Shoe</title>
+  </head>
+
+
+<body>
+<a href="/shoes">Back to Shoes</a>
+<h1>Edit <%= shoe.name %></h1>
+
+<form action="/shoes/<%=shoe._id%>?_method=PUT" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="<%= shoe.name %>" />
+  
+    <label for="hasYouBoughtYet">Have You Bought This Shoe Yet?</label>
+    <input type="checkbox" 
+        name="hasYouBoughtYet" 
+        id="hasYouBoughtYet"
+        <% if (shoe.hasYouBoughtYet) { %>checked<% }  %> >
+  
+    <button type="submit">Update Shoe</button>
+  </form>
+</body>
+</html>

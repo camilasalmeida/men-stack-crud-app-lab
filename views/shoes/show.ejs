@@ -7,12 +7,11 @@
   </head>
 
 
-
-
-
-
   <body>
+    <a href="/">Homepage</a>
+    <a href="/shoes/new">Add a Shoe</a>
     <a href="/shoes/">Back to Shoes</a>
+
     <h1><%= shoe.name %></h1>
     <% if (shoe.hasYouBoughtYet) { %>
         <p>You already have bought this shoe!</p>
@@ -23,8 +22,6 @@
     <form action="/shoes/<%=shoe._id%>?_method=DELETE" method="POST">
         <button type="submit">Delete <%= shoe.name %></button>
     </form>
-    <a href="/shoes">Back to Shoes</a>
-
-
+    <a href="/shoes/<%= shoe._id %>/edit">Edit <%= shoe.name %></a>
   </body>
 </html>
