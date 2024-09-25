@@ -19,5 +19,12 @@
         <% } else { %>
         <p>You haven't bought this shoe yet! Consider adding it to your collection!</p>
     <% } %>
+
+    <form action="/shoes/<%=shoe._id%>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= shoe.name %></button>
+    </form>
+    <a href="/shoes">Back to Shoes</a>
+
+
   </body>
 </html>

@@ -3,6 +3,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
 const mongoose = require('mongoose');
+const methodOverride = require("method-override");
+const morgan = require("morgan");
+
 
 const app = express();
 
@@ -17,12 +20,12 @@ mongoose.connection.on('connected', () => {
 const Shoe = require('./models/shoe.js');
 
 
+
+
+//--------------------------------------------------------------------------------------\\
 app.use(express.urlencoded({ extended: false }));
-
-
-
-
-
+app.use(methodOverride('_method')); 
+app.use(morgan('dev')); 
 
 
 //-------------------------------------------------------------------------------------\\
@@ -58,6 +61,11 @@ app.get('/shoes', async (req,res) => {
 app.get('/shoes/:shoeId', async (req,res) => {
     const foundShoe = await Shoe.findById(req.params.shoeId);         //Retrieving a single document based on its unique identifier.
     res.render('shoes/show.ejs', { shoe: foundShoe });
+});
+
+app.delete('/shoes/:shoeId', async (req, res) => {
+    await Shoe.findByIdAndDelete(req.params.shoeId);
+    res.redirect('/shoes');
 });
 
 
