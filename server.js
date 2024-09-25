@@ -44,10 +44,21 @@ app.post('/shoes', async (req,res) => {
     }
     console.log(req.body);
     await Shoe.create(req.body);
-    res.redirect('/shoes/new');
+    res.redirect('/shoes');
 })
 
+//GET, Index route
+app.get('/shoes', async (req,res) => {
+    const allShoes = await Shoe.find();          //Retrieving all data from the database
+    //console.log(allShoes);
+    res.render('shoes/index.ejs', { shoes: allShoes});    //The first argument is a string specifying the path to the EJS template we wish to render. The second argument is an object containing the data we want to pass to the template. 
+});
 
+
+app.get('/shoes/:shoeId', async (req,res) => {
+    const foundShoe = await Shoe.findById(req.params.shoeId);         //Retrieving a single document based on its unique identifier.
+    res.render('shoes/show.ejs', { shoe: foundShoe });
+});
 
 
 //-------------------------------------------------------------------------------------\\

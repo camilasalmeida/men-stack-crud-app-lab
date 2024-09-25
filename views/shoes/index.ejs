@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shoes Index</title>
+  </head>
+
+
+
+
+
+
+
+  <body>
+    <a href="/shoes/new">Add New Shoe</a>
+    <h1>All Shoes </h1>
+    <ul>
+        <% shoes.forEach(shoe => { %>
+            <li>
+                <a href="/shoes/<%= shoe.id %>"> <%= shoe.name %> </a>
+            </li>
+        <% }) %>
+    </ul>
+  </body>
+</html>

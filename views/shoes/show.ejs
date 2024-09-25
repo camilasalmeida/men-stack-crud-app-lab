@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= shoe.name %></title>
+  </head>
+
+
+
+
+
+
+  <body>
+    <a href="/shoes/">Back to Shoes</a>
+    <h1><%= shoe.name %></h1>
+    <% if (shoe.hasYouBoughtYet) { %>
+        <p>You already have bought this shoe!</p>
+        <% } else { %>
+        <p>You haven't bought this shoe yet! Consider adding it to your collection!</p>
+    <% } %>
+  </body>
+</html>
